@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensign Connect Navigator | Student Onboarding Guide</title>
+  <meta name="description" content="Step-by-step onboarding guide for Ensign College students to sign up for Ensign Connect, join major groups, enable SMS alerts, and connect with alumni.">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script>
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <div>
+        <span class="brand-badge">Ensign College Career Services</span>
+        <h1 class="header-title">Ensign Connect Navigator</h1>
+        <p class="header-subtitle">Your student guide to signing up, joining major groups, setting up SMS alerts, and networking with alumni.</p>
+      </div>
+      <div class="header-actions">
+        <a href="https://ces.peoplegrove.com/hub/ces/organizations/ensign-connect" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm">
+          Open Ensign Connect ↗
+        </a>
+        <a href="https://connect.byu.edu/hub/ces/pathways/roadmap-5-networking-job-search-r5-copy-kO5LvQ4GdV/steps/0" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
+          Networking Roadmap 5 ↗
+        </a>
+        <a href="https://www.ensign.edu/ensign-connect-app" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+          Ensign Connect Info ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="main-content">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="card">
+        <div class="progress-header">
+          <strong style="font-size: 14px; color: var(--navy-900);">Your Onboarding Progress</strong>
+        </div>
+        <div class="progress-bar-bg">
+          <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+        <p id="progress-count" style="font-size: 12.5px; color: var(--gray-700); margin-bottom: 18px; font-weight: 600;">
+          0/14 steps complete (0%)
+        </p>
+
+        <nav class="nav-steps" aria-label="Onboarding Steps">
+          <button id="nav-step-0" class="nav-step-btn active" type="button">
+            <span class="step-num">1</span>
+            <span>Choose Platform</span>
+          </button>
+          <button id="nav-step-1" class="nav-step-btn" type="button">
+            <span class="step-num">2</span>
+            <span>Sign Up &amp; SSO</span>
+          </button>
+          <button id="nav-step-2" class="nav-step-btn" type="button">
+            <span class="step-num">3</span>
+            <span>Join Major Group</span>
+          </button>
+          <button id="nav-step-3" class="nav-step-btn" type="button">
+            <span class="step-num">4</span>
+            <span>SMS Notifications</span>
+          </button>
+          <button id="nav-step-4" class="nav-step-btn" type="button">
+            <span class="step-num">5</span>
+            <span>Alumni &amp; Interviews</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Checklists: Always Displayed on the Left -->
+      <div class="card" style="padding: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--gray-200); padding-bottom: 8px;">
+          <strong style="font-size: 14px; color: var(--navy-900);">Task Checklists</strong>
+          <span style="font-size: 11px; font-weight: 700; color: var(--navy-900); background: var(--gold-100); border: 1px solid var(--gold-500); padding: 2px 8px; border-radius: 999px;">All Stages</span>
+        </div>
+
+        <div class="sidebar-checklists-wrapper">
+          <!-- Step 1 Group -->
+          <div class="sidebar-step-group active" id="step-group-0">
+            <div class="sidebar-step-group-header" onclick="goToStep(0)">
+              <span class="sidebar-step-badge">1</span>
+              <span>Platform &amp; Video</span>
+            </div>
+            <div id="checklist-step-0" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 2 Group -->
+          <div class="sidebar-step-group" id="step-group-1">
+            <div class="sidebar-step-group-header" onclick="goToStep(1)">
+              <span class="sidebar-step-badge">2</span>
+              <span>Sign Up &amp; SSO</span>
+            </div>
+            <div id="checklist-step-1" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 3 Group -->
+          <div class="sidebar-step-group" id="step-group-2">
+            <div class="sidebar-step-group-header" onclick="goToStep(2)">
+              <span class="sidebar-step-badge">3</span>
+              <span>Join Major Group</span>
+            </div>
+            <div id="checklist-step-2" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 4 Group -->
+          <div class="sidebar-step-group" id="step-group-3">
+            <div class="sidebar-step-group-header" onclick="goToStep(3)">
+              <span class="sidebar-step-badge">4</span>
+              <span>SMS Alerts</span>
+            </div>
+            <div id="checklist-step-3" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 5 Group -->
+          <div class="sidebar-step-group" id="step-group-4">
+            <div class="sidebar-step-group-header" onclick="goToStep(4)">
+              <span class="sidebar-step-badge">5</span>
+              <span>Alumni &amp; Outreach</span>
+            </div>
+            <div id="checklist-step-4" class="checklist sidebar-checklist"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Resources Widget -->
+      <div class="card" style="padding: 18px;">
+        <strong style="font-size: 13.5px; color: var(--navy-900); display: block; margin-bottom: 10px;">Quick Resources</strong>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;">
+          <a href="https://ces.peoplegrove.com/hub/ces/groups?organization=19963" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-weight: 600;">
+            📁 Ensign Major Groups ↗
+          </a>
+          <a href="https://ces.peoplegrove.com/preferences/notifications" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-weight: 600;">
+            🔔 Notification Preferences ↗
+          </a>
+          <a href="https://ces.peoplegrove.com/hub/ces/person" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-weight: 600;">
+            👥 Alumni Directory ↗
+          </a>
+          <a href="https://connect.byu.edu/hub/ces/pathways/roadmap-5-networking-job-search-r5-copy-kO5LvQ4GdV/steps/0" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-weight: 600;">
+            🗺️ Networking Roadmap 5 ↗
+          </a>
+          <a href="https://www.ensign.edu/CIS" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-weight: 600;">
+            🎯 Career &amp; Internship Services ↗
+          </a>
+          <div style="margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--gray-200); font-size: 11.5px; font-weight: 700; color: var(--gold-600); text-transform: uppercase;">Interview Tip Guides</div>
+          <a href="https://lds-business-college.brightspotcdn.com/12/5b/6df443b6489d9c008cb497c2a95f/informational-interviews.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-size: 12.5px;">
+            📄 Informational Interviews Guide ↗
+          </a>
+          <a href="https://lds-business-college.brightspotcdn.com/f0/b5/f78938de4d26b0ba8cc704fb8727/knowyourprofessionalguide.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-size: 12.5px;">
+            📘 Know Your Professional Guide ↗
+          </a>
+          <a href="https://brightspotcdn.byu.edu/54/b6/2554ebb842fab54640a15ff0afb3/informational-interview.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); text-decoration: none; font-size: 12.5px;">
+            📑 BYU Interview Handout ↗
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Step Views -->
+    <main>
+
+      <!-- STEP 1: Choose Platform -->
+      <section id="step-0" class="step-section active card">
+        <div class="step-header">
+          <div class="step-kicker">Stage 1 of 5</div>
+          <h2 class="step-title">Choose Your Platform &amp; Access Method</h2>
+          <p class="step-description">
+            Ensign Connect is powered by PeopleGrove. You can access it on any web browser or download the mobile app on iOS or Android.
+          </p>
+        </div>
+        <!-- Embedded Video Player -->
+        <div style="margin: 20px 0;">
+          <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-sm); box-shadow: 0 4px 14px rgba(0,0,0,0.12); background: #000;">
+            <iframe src="https://players.brightcove.net/1699278547001/fSxeykeCHG_default/index.html?videoId=6398251412112"
+              allowfullscreen
+              allow="encrypted-media"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+              title="Getting Started with Ensign Connect Video Guide"></iframe>
+          </div>
+          <div style="font-size: 12px; color: var(--gray-700); margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span>📹 <strong>Official Guide:</strong> Getting Started with Ensign Connect</span>
+            <a href="https://www.ensign.edu/ensign-connect-app" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); font-weight: 600; text-decoration: none;">Watch on Ensign.edu ↗</a>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px;">
+          <div style="border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 16px; text-align: center; background: var(--gray-50);">
+            <div style="font-size: 28px; margin-bottom: 6px;">💻</div>
+            <strong style="display: block; font-size: 15px; margin-bottom: 4px; color: var(--navy-900);">Web Browser</strong>
+            <p style="font-size: 12.5px; color: var(--gray-700); margin-bottom: 12px;">Fastest setup from your laptop or desktop computer.</p>
+            <a href="https://ces.peoplegrove.com/hub/ces/organizations/ensign-connect" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" style="width: 100%;">
+              Open Web Portal ↗
+            </a>
+          </div>
+
+          <div style="border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 16px; text-align: center; background: var(--gray-50);">
+            <div style="font-size: 28px; margin-bottom: 6px;">🍏</div>
+            <strong style="display: block; font-size: 15px; margin-bottom: 4px; color: var(--navy-900);">iPhone &amp; iPad</strong>
+            <p style="font-size: 12.5px; color: var(--gray-700); margin-bottom: 12px;">Download PeopleGrove on the Apple App Store.</p>
+            <a href="https://apps.apple.com/us/app/peoplegrove/id6737795408" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="width: 100%;">
+              Apple App Store ↗
+            </a>
+          </div>
+
+          <div style="border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 16px; text-align: center; background: var(--gray-50);">
+            <div style="font-size: 28px; margin-bottom: 6px;">🤖</div>
+            <strong style="display: block; font-size: 15px; margin-bottom: 4px; color: var(--navy-900);">Android</strong>
+            <p style="font-size: 12.5px; color: var(--gray-700); margin-bottom: 12px;">Download PeopleGrove on the Google Play Store.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.peoplegrove.mobile&hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="width: 100%;">
+              Google Play ↗
+            </a>
+          </div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">💡</div>
+          <div>
+            <strong>Mobile App Setup Note:</strong> When you open the PeopleGrove app for the first time, search for and select <strong>Church Educational System (CES)</strong>, then choose <strong>Ensign College</strong>.
+          </div>
+        </div>
+
+
+
+        <div class="step-footer">
+          <div></div>
+          <button type="button" class="btn btn-primary" data-next-step>Continue to Sign Up ➔</button>
+        </div>
+      </section>
+
+      <!-- STEP 2: Sign Up & SSO -->
+      <section id="step-1" class="step-section card">
+        <div class="step-header">
+          <div class="step-kicker">Stage 2 of 5</div>
+          <h2 class="step-title">Sign Up &amp; SSO Authentication</h2>
+          <p class="step-description">
+            Complete your registration using your official Ensign College account.
+          </p>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-icon">⚡</div>
+          <div>
+            <strong>Important Recommendation:</strong> Always select <strong>"Sign in with school ID"</strong>! Continuing with CES SSO (Single Sign-On with your NetID) automatically verifies your active student enrollment and <strong>bypasses the manual approval queue</strong>.
+          </div>
+        </div>
+
+        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 18px; margin: 16px 0;">
+          <h3 style="font-size: 16px; color: var(--navy-900); margin-bottom: 12px;">Sign-Up Flow Walkthrough</h3>
+          <ol style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: var(--gray-700);">
+            <li>Go to the <a href="https://ces.peoplegrove.com/hub/ces/organizations/ensign-connect" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); font-weight: 700;">Ensign Connect Portal</a>.</li>
+            <li>Click the gold <strong>"Join Now"</strong> or <strong>"Sign Up"</strong> button in the welcome banner.</li>
+            <li>Select <strong>"Sign in with school ID"</strong>.</li>
+            <li>Log in using your Church Account / Ensign College NetID credentials when redirected to <code>alumni.ceslogin.org</code>.</li>
+            <li>Confirm your profile details (your major, degree program, and anticipated graduation year).</li>
+          </ol>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">ℹ️</div>
+          <div>
+            <strong>Signing up with LinkedIn or Email:</strong> If you sign up using LinkedIn or personal email instead of your school ID, your profile enters an administrative verification queue before you can access alumni and groups.
+          </div>
+        </div>
+
+
+
+        <div class="step-footer">
+          <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
+          <button type="button" class="btn btn-primary" data-next-step>Continue to Major Groups ➔</button>
+        </div>
+      </section>
+
+      <!-- STEP 3: Join Major Group -->
+      <section id="step-2" class="step-section card">
+        <div class="step-header">
+          <div class="step-kicker">Stage 3 of 5 · Task 2 Step 2</div>
+          <h2 class="step-title">Join Your Major Group</h2>
+          <p class="step-description">
+            Connecting to your major group lets you interact with peers, alumni in your specific field, and program faculty.
+          </p>
+        </div>
+
+        <div class="callout callout-success">
+          <div class="callout-icon">🎯</div>
+          <div>
+            <strong>ENS 101 Mentor Appointment Direction:</strong> Choose <em>Ensign College</em> under Schools, open <em>Groups</em>, and select the matching group for your degree program.
+          </div>
+        </div>
+
+        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 18px; margin: 16px 0;">
+          <h3 style="font-size: 16px; color: var(--navy-900); margin-bottom: 8px;">Key Controls to Look For</h3>
+          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: var(--gray-700);">
+            <li><strong>Green "Join" Button:</strong> Click this to officially enter the group for your degree program.</li>
+            <li><strong>Blue "Members" Tab:</strong> View enrolled students, alumni mentors, and faculty members in your department.</li>
+            <li><strong>Blue "Discussion" Tab:</strong> Post career questions, read job/internship leads, and engage with the community.</li>
+          </ul>
+        </div>
+
+        <!-- Searchable Groups Directory -->
+        <div style="margin: 22px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <h3 style="font-size: 16px; color: var(--navy-900);">Ensign College Major Groups Directory</h3>
+            <a href="https://ces.peoplegrove.com/hub/ces/groups?organization=19963" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm">
+              Browse All Groups on Ensign Connect ↗
+            </a>
+          </div>
+
+          <div class="groups-filter">
+            <input id="group-search-input" type="text" class="search-input" placeholder="Search major (e.g., Cybersecurity, Accounting, Software)..." aria-label="Search Ensign College major groups">
+          </div>
+
+          <div id="groups-grid" class="groups-grid">
+            <!-- Dynamically populated from config -->
+          </div>
+        </div>
+
+
+
+        <div class="step-footer">
+          <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
+          <button type="button" class="btn btn-primary" data-next-step>Continue to Notifications ➔</button>
+        </div>
+      </section>
+
+      <!-- STEP 4: Configure SMS Notifications -->
+      <section id="step-3" class="step-section card">
+        <div class="step-header">
+          <div class="step-kicker">Stage 4 of 5</div>
+          <h2 class="step-title">Enable SMS &amp; Notification Preferences</h2>
+          <p class="step-description">
+            Never miss an alumni connection or mentor message by turning on SMS text alerts.
+          </p>
+        </div>
+
+        <div class="callout callout-warning">
+          <div class="callout-icon">📱</div>
+          <div>
+            <strong>Crucial Setting from Ensign College:</strong> Most alumni reply promptly via Ensign Connect messaging. If SMS notifications are disabled, student replies are often delayed by days or missed entirely!
+          </div>
+        </div>
+
+        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 32px 20px; margin: 24px 0; text-align: center;">
+          <p style="font-size: 15px; color: var(--gray-700); margin-bottom: 20px; max-width: 560px; margin-left: auto; margin-right: auto;">
+            Ensign Connect opens directly to your Notification Preferences where you can enter your mobile phone number and toggle SMS text alerts on.
+          </p>
+          <a id="sms-pref-link" href="https://ces.peoplegrove.com/preferences/notifications" target="_blank" rel="noopener noreferrer" class="btn btn-accent" style="padding: 12px 26px; font-size: 15px; font-weight: 700;">
+            Open My Notification Preferences ↗
+          </a>
+        </div>
+
+        <div class="step-footer">
+          <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
+          <button type="button" class="btn btn-primary" data-next-step>Continue to Alumni &amp; Interviews ➔</button>
+        </div>
+      </section>
+
+      <!-- STEP 5: Alumni & Informational Interviews -->
+      <section id="step-4" class="step-section card">
+        <div class="step-header">
+          <div class="step-kicker">Stage 5 of 5 · Task 2 Step 2</div>
+          <h2 class="step-title">Connect with Alumni &amp; Informational Interviews</h2>
+          <p class="step-description">
+            Explore the Ensign College alumni community, review informational interview questions, and draft your outreach message.
+          </p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">👥</div>
+          <div>
+            <strong>Exploring the Community:</strong> Head to the <a href="https://ces.peoplegrove.com/hub/ces/person" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); font-weight: 700;">Alumni &amp; Community Directory</a> to filter by industry, employer, degree, or graduation year.
+          </div>
+        </div>
+
+        <!-- Recommended Roadmap 5 Box -->
+        <div style="background: var(--gold-100); border: 1.5px solid var(--gold-500); border-radius: var(--radius-sm); padding: 18px 20px; margin: 18px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <div style="font-size: 11px; font-weight: 700; color: #7a5c00; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px;">Essential PeopleGrove Module</div>
+            <h3 style="font-size: 16px; color: var(--navy-900); margin: 0 0 4px 0;">Roadmap 5: Networking &amp; Job Search</h3>
+            <p style="font-size: 13px; color: var(--gray-700); margin: 0; max-width: 650px;">
+              Master informational interviews, outreach message etiquette, and professional networking strategies through the official CES Roadmap.
+            </p>
+          </div>
+          <a href="https://connect.byu.edu/hub/ces/pathways/roadmap-5-networking-job-search-r5-copy-kO5LvQ4GdV/steps/0" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm" style="white-space: nowrap; font-weight: 700; padding: 9px 16px;">
+            Open Roadmap 5 ↗
+          </a>
+        </div>
+
+        <!-- Official Informational Interview Guides & Tip Handouts -->
+        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 18px; margin: 16px 0;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 12px;">
+            <h3 style="font-size: 16px; color: var(--navy-900);">Official Informational Interview Tip Guides</h3>
+            <span style="font-size: 11.5px; color: var(--gold-600); font-weight: 700; text-transform: uppercase;">Official PDF Guides</span>
+          </div>
+          <p style="font-size: 13px; color: var(--gray-700); margin-bottom: 12px;">
+            Review these official handouts for interview questions, preparation checklists, and outreach tips:
+          </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px;">
+            <a href="https://lds-business-college.brightspotcdn.com/12/5b/6df443b6489d9c008cb497c2a95f/informational-interviews.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="text-align: left; justify-content: flex-start; padding: 10px 14px; font-weight: 600;">
+              📄 Informational Interviews Guide ↗
+            </a>
+            <a href="https://lds-business-college.brightspotcdn.com/f0/b5/f78938de4d26b0ba8cc704fb8727/knowyourprofessionalguide.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="text-align: left; justify-content: flex-start; padding: 10px 14px; font-weight: 600;">
+              📘 Know Your Professional Guide ↗
+            </a>
+            <a href="https://brightspotcdn.byu.edu/54/b6/2554ebb842fab54640a15ff0afb3/informational-interview.pdf?openInDeviceBrowser=true" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm" style="text-align: left; justify-content: flex-start; padding: 10px 14px; font-weight: 600;">
+              📑 BYU Interview Handout ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Informational Interview Handout Reference -->
+        <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 18px; margin: 16px 0;">
+          <h3 style="font-size: 16px; color: var(--navy-900); margin-bottom: 8px;">Core Informational Interview Questions (from ENS 101 Handout)</h3>
+          <p style="font-size: 13px; color: var(--gray-700); margin-bottom: 12px;">Use these questions when conducting a 15-minute informational interview:</p>
+          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: var(--gray-700);">
+            <li>How did your coursework and certificates at Ensign College help you launch your career?</li>
+            <li>What does a typical day look like in your current role?</li>
+            <li>Which technical tools, skills, or certifications do you look for in entry-level candidates?</li>
+            <li>What advice would you give to a current Ensign College student applying for their first internship?</li>
+            <li>Who else or what professional groups would you recommend I connect with?</li>
+          </ul>
+        </div>
+
+        <!-- Outreach Generator -->
+        <div style="background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: var(--radius-sm); padding: 20px; margin: 20px 0;">
+          <h3 style="font-size: 16px; color: var(--navy-900); margin-bottom: 6px;">Outreach Message Generator</h3>
+          <p style="font-size: 13px; color: var(--gray-700); margin-bottom: 16px;">
+            Fill in your details to create a polite, professional connection request ready to send on Ensign Connect:
+          </p>
+
+          <form id="outreach-form">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+              <div class="form-group">
+                <label class="form-label" for="outreach-student-name">Your Name</label>
+                <input id="outreach-student-name" type="text" class="form-control" placeholder="e.g. Maria Santos" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="outreach-alum-name">Alumnus Name (Optional)</label>
+                <input id="outreach-alum-name" type="text" class="form-control" placeholder="e.g. John Taylor">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="outreach-major">Your Major</label>
+                <input id="outreach-major" type="text" class="form-control" placeholder="e.g. Cybersecurity" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="outreach-career">Career Role / Field of Interest</label>
+                <input id="outreach-career" type="text" class="form-control" placeholder="e.g. Cloud Security Analyst" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="outreach-tone">Message Style</label>
+                <select id="outreach-tone" class="form-control">
+                  <option value="standard">Standard (Respectful &amp; Thorough)</option>
+                  <option value="focused">Focused (Quick 15-minute direct ask)</option>
+                  <option value="casual">Casual (Friendly student-to-alum)</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 8px;">
+              Generate Outreach Message ✍️
+            </button>
+          </form>
+
+          <div id="outreach-box" style="display: none; margin-top: 18px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <strong style="font-size: 13.5px; color: var(--navy-900);">Your Generated Message:</strong>
+              <button id="copy-outreach-btn" type="button" class="btn btn-outline btn-sm">
+                📋 Copy Message
+              </button>
+            </div>
+            <div id="outreach-result" class="outreach-output"></div>
+          </div>
+        </div>
+
+
+
+        <div class="step-footer">
+          <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
+          <a href="https://ces.peoplegrove.com/hub/ces/person" target="_blank" rel="noopener noreferrer" class="btn btn-success">
+            Open Alumni Community &amp; Connect ↗
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
