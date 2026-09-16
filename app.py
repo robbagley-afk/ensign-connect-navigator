@@ -30,7 +30,7 @@ if env_file.exists():
             k, v = line.split("=", 1)
             os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
-PORT = int(os.environ.get("PORT", "5060"))
+PORT = int(os.environ.get("PORT", "5065"))
 HOST = os.environ.get("HOST", "0.0.0.0")
 
 # Authoritative Links & References

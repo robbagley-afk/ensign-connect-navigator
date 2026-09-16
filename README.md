@@ -23,14 +23,14 @@ cd ensign-connect-navigator
 python3 app.py
 ```
 
-Open [http://127.0.0.1:5060](http://127.0.0.1:5060) in your browser.
+Open [http://127.0.0.1:5065](http://127.0.0.1:5065) in your browser.
 
 ## Configuration
 
 Set environment variables in `.env` or in your shell:
 
 ```bash
-PORT=5060
+PORT=5065
 HOST=0.0.0.0
 ```
 
