@@ -33,7 +33,7 @@
           Open Ensign Connect ↗
         </a>
         <a href="https://www.ensign.edu/ensign-connect-app" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
-          Ensign Info Page ↗
+          Ensign Connect Info ↗
         </a>
       </div>
     </div>
@@ -79,6 +79,61 @@
         </nav>
       </div>
 
+      <!-- Checklists: Always Displayed on the Left -->
+      <div class="card" style="padding: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; border-bottom: 1px solid var(--gray-200); padding-bottom: 8px;">
+          <strong style="font-size: 14px; color: var(--navy-900);">Task Checklists</strong>
+          <span style="font-size: 11px; font-weight: 700; color: var(--navy-900); background: var(--gold-100); border: 1px solid var(--gold-500); padding: 2px 8px; border-radius: 999px;">All Stages</span>
+        </div>
+
+        <div class="sidebar-checklists-wrapper">
+          <!-- Step 1 Group -->
+          <div class="sidebar-step-group active" id="step-group-0">
+            <div class="sidebar-step-group-header" onclick="goToStep(0)">
+              <span class="sidebar-step-badge">1</span>
+              <span>Platform &amp; Video</span>
+            </div>
+            <div id="checklist-step-0" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 2 Group -->
+          <div class="sidebar-step-group" id="step-group-1">
+            <div class="sidebar-step-group-header" onclick="goToStep(1)">
+              <span class="sidebar-step-badge">2</span>
+              <span>Sign Up &amp; SSO</span>
+            </div>
+            <div id="checklist-step-1" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 3 Group -->
+          <div class="sidebar-step-group" id="step-group-2">
+            <div class="sidebar-step-group-header" onclick="goToStep(2)">
+              <span class="sidebar-step-badge">3</span>
+              <span>Join Major Group</span>
+            </div>
+            <div id="checklist-step-2" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 4 Group -->
+          <div class="sidebar-step-group" id="step-group-3">
+            <div class="sidebar-step-group-header" onclick="goToStep(3)">
+              <span class="sidebar-step-badge">4</span>
+              <span>SMS Alerts</span>
+            </div>
+            <div id="checklist-step-3" class="checklist sidebar-checklist"></div>
+          </div>
+
+          <!-- Step 5 Group -->
+          <div class="sidebar-step-group" id="step-group-4">
+            <div class="sidebar-step-group-header" onclick="goToStep(4)">
+              <span class="sidebar-step-badge">5</span>
+              <span>Alumni &amp; Outreach</span>
+            </div>
+            <div id="checklist-step-4" class="checklist sidebar-checklist"></div>
+          </div>
+        </div>
+      </div>
+
       <!-- Quick Resources Widget -->
       <div class="card" style="padding: 18px;">
         <strong style="font-size: 13.5px; color: var(--navy-900); display: block; margin-bottom: 10px;">Quick Resources</strong>
@@ -121,6 +176,20 @@
             Ensign Connect is powered by PeopleGrove. You can access it on any web browser or download the mobile app on iOS or Android.
           </p>
         </div>
+        <!-- Embedded Video Player -->
+        <div style="margin: 20px 0;">
+          <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: var(--radius-sm); box-shadow: 0 4px 14px rgba(0,0,0,0.12); background: #000;">
+            <iframe src="https://players.brightcove.net/1699278547001/fSxeykeCHG_default/index.html?videoId=6398251412112"
+              allowfullscreen
+              allow="encrypted-media"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+              title="Getting Started with Ensign Connect Video Guide"></iframe>
+          </div>
+          <div style="font-size: 12px; color: var(--gray-700); margin-top: 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span>📹 <strong>Official Guide:</strong> Getting Started with Ensign Connect</span>
+            <a href="https://www.ensign.edu/ensign-connect-app" target="_blank" rel="noopener noreferrer" style="color: var(--navy-800); font-weight: 600; text-decoration: none;">Watch on Ensign.edu ↗</a>
+          </div>
+        </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 20px;">
           <div style="border: 1px solid var(--gray-200); border-radius: var(--radius-sm); padding: 16px; text-align: center; background: var(--gray-50);">
@@ -158,10 +227,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 18px;">
-          <h3 style="font-size: 15px; color: var(--navy-900); margin-bottom: 8px;">Checklist for this step:</h3>
-          <div id="checklist-step-0" class="checklist"></div>
-        </div>
+
 
         <div class="step-footer">
           <div></div>
@@ -204,10 +270,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 18px;">
-          <h3 style="font-size: 15px; color: var(--navy-900); margin-bottom: 8px;">Checklist for this step:</h3>
-          <div id="checklist-step-1" class="checklist"></div>
-        </div>
+
 
         <div class="step-footer">
           <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
@@ -259,10 +322,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 18px;">
-          <h3 style="font-size: 15px; color: var(--navy-900); margin-bottom: 8px;">Checklist for this step:</h3>
-          <div id="checklist-step-2" class="checklist"></div>
-        </div>
+
 
         <div class="step-footer">
           <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>
@@ -403,10 +463,7 @@
           </div>
         </div>
 
-        <div style="margin-top: 18px;">
-          <h3 style="font-size: 15px; color: var(--navy-900); margin-bottom: 8px;">Checklist for this step:</h3>
-          <div id="checklist-step-4" class="checklist"></div>
-        </div>
+
 
         <div class="step-footer">
           <button type="button" class="btn btn-outline" data-prev-step>⬅ Back</button>

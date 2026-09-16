@@ -8,23 +8,25 @@ let state = {
   checked: {}
 };
 
-// Default Checklist Items across the 5 steps
+// Default Checklist Items across the 5 steps (Always displayed on left sidebar)
 const CHECKLIST_ITEMS = [
-  // Step 1
-  { id: 's1_platform', step: 0, title: 'Choose access method', desc: 'Select Web browser or download PeopleGrove app on mobile.' },
-  { id: 's1_video', step: 0, title: 'Watch starter guide (optional)', desc: 'Review the quick video guide on signing in with school ID or LinkedIn.' },
-  // Step 2
-  { id: 's2_join_btn', step: 1, title: 'Click "Join Now" or "Sign Up"', desc: 'Navigate to Ensign Connect and initiate registration.' },
-  { id: 's2_sso', step: 1, title: 'Sign in with School ID (SSO)', desc: 'Recommended: Use your Ensign College NetID/CES login to skip the manual approval queue.' },
-  { id: 's2_profile', step: 1, title: 'Complete basic profile details', desc: 'Confirm your name, major, graduation year, and career goals.' },
-  // Step 3
-  { id: 's3_find_groups', step: 2, title: 'Open Ensign College Groups', desc: 'Select Ensign College under Schools and view the major groups directory.' },
-  { id: 's3_join_group', step: 2, title: 'Join your specific major group', desc: 'Click the green Join control on your degree program group.' },
-  { id: 's3_explore_tabs', step: 2, title: 'Check Members & Discussion', desc: 'Review the blue Members and Discussion links to see active peers and faculty.' },
-  // Step 5
-  { id: 's5_browse_alumni', step: 4, title: 'Browse Ensign Alumni Community', desc: 'Search by industry, job title, or company in the PeopleGrove directory.' },
-  { id: 's5_review_questions', step: 4, title: 'Review Informational Interview questions', desc: 'Prepare 3-5 thoughtful questions from the ENS 101 guide.' },
-  { id: 's5_send_message', step: 4, title: 'Draft and send outreach message', desc: 'Use the outreach generator below and send an invitation to connect.' }
+  // Stage 1
+  { id: "s1_video", step: 0, title: "Watch starter video guide", desc: "Play the in-app video guide." },
+  { id: "s1_platform", step: 0, title: "Choose access method", desc: "Web browser or mobile app." },
+  // Stage 2
+  { id: "s2_join_btn", step: 1, title: "Click \"Join Now\" / \"Sign Up\"", desc: "Go to Ensign Connect portal." },
+  { id: "s2_sso", step: 1, title: "Sign in with School ID (SSO)", desc: "NetID bypasses approval queue." },
+  { id: "s2_profile", step: 1, title: "Complete profile details", desc: "Confirm major, grad year, goals." },
+  // Stage 3
+  { id: "s3_find_groups", step: 2, title: "Open Ensign Major Groups", desc: "Select Ensign College under Schools." },
+  { id: "s3_join_group", step: 2, title: "Join your major group", desc: "Click the green Join button." },
+  { id: "s3_explore_tabs", step: 2, title: "Explore Members & Discussion", desc: "Check peers, faculty, and discussion." },
+  // Stage 4
+  { id: "s4_sms_phone", step: 3, title: "Open Notification Preferences", desc: "Add phone number and enable SMS alerts." },
+  // Stage 5
+  { id: "s5_browse_alumni", step: 4, title: "Browse Ensign Alumni Directory", desc: "Filter by industry, employer, or degree." },
+  { id: "s5_review_questions", step: 4, title: "Review Interview Tip Guides", desc: "Check the 3 official PDF handouts." },
+  { id: "s5_send_message", step: 4, title: "Generate & send outreach message", desc: "Send an invitation to connect." }
 ];
 
 // Initialize
@@ -104,6 +106,7 @@ function goToStep(stepIndex) {
 
   const stepBtns = document.querySelectorAll('.nav-step-btn');
   const sections = document.querySelectorAll('.step-section');
+  const groups = document.querySelectorAll('.sidebar-step-group');
 
   stepBtns.forEach((b, i) => {
     b.classList.toggle('active', i === stepIndex);
@@ -113,8 +116,13 @@ function goToStep(stepIndex) {
     s.classList.toggle('active', i === stepIndex);
   });
 
+  groups.forEach((g, i) => {
+    g.classList.toggle('active', i === stepIndex);
+  });
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+window.goToStep = goToStep;
 
 function setupChecklistInteractions() {
   const searchInput = document.getElementById('group-search-input');
@@ -128,7 +136,9 @@ function setupChecklistInteractions() {
   if (smsPrefLink) {
     smsPrefLink.addEventListener('click', () => {
       state.smsOpened = true;
+      state.checked['s4_sms_phone'] = true;
       saveState();
+      renderChecklist();
       updateProgress();
     });
   }
@@ -189,25 +199,29 @@ function toggleCheckItem(itemId) {
 }
 
 function updateProgress() {
-  const total = CHECKLIST_ITEMS.length + 1;
-  const checklistCompleted = Object.values(state.checked).filter(Boolean).length;
-  const smsCompleted = state.smsOpened ? 1 : 0;
-  const completed = checklistCompleted + smsCompleted;
-  const pct = Math.round((completed / total) * 100);
+  const total = CHECKLIST_ITEMS.length;
+  const completed = Object.values(state.checked).filter(Boolean).length;
+  const pct = total > 0 ? Math.round((completed / total) * 100) : 0;
 
   const fillEl = document.getElementById('progress-fill');
   const countEl = document.getElementById('progress-count');
 
   if (fillEl) fillEl.style.width = `${pct}%`;
-  if (countEl) countEl.textContent = `${completed}/${total} steps complete (${pct}%)`;
+  if (countEl) countEl.textContent = `${completed}/${total} tasks complete (${pct}%)`;
 
-  // Update step button completed styles
+  // Update step button & group completed styles
   for (let s = 0; s < 5; s++) {
     const stepItems = CHECKLIST_ITEMS.filter(item => item.step === s);
-    const stepDone = stepItems.length > 0 ? stepItems.every(item => state.checked[item.id]) : Boolean(state.smsOpened);
+    const stepDone = stepItems.length > 0 && stepItems.every(item => state.checked[item.id]);
+    
     const btn = document.getElementById(`nav-step-${s}`);
     if (btn) {
       btn.classList.toggle('completed', stepDone);
+    }
+
+    const group = document.getElementById(`step-group-${s}`);
+    if (group) {
+      group.classList.toggle('completed', stepDone);
     }
   }
 }
