@@ -45,18 +45,127 @@ CONFIG_DATA = {
     "community_directory_url": "https://ces.peoplegrove.com/hub/ces/person",
     "starter_video_id": "6398251412112",
     "starter_guide_page": "https://www.ensign.edu/ensign-connect-app",
+    "networking_roadmap_url": "https://connect.byu.edu/hub/ces/pathways/roadmap-5-networking-job-search-r5-copy-kO5LvQ4GdV/steps/0",
     "major_groups": [
-        {"id": "accounting", "name": "Accounting", "department": "Business & Accounting"},
-        {"id": "business-mgmt", "name": "Business Management & Operations", "department": "Business & Accounting"},
-        {"id": "cybersecurity", "name": "Cybersecurity", "department": "Information Technology"},
-        {"id": "digital-marketing", "name": "Digital Marketing & Content Creation", "department": "Communications"},
-        {"id": "info-tech", "name": "Information Technology & Systems Administration", "department": "Information Technology"},
-        {"id": "interior-design", "name": "Interior Design", "department": "Design & Arts"},
-        {"id": "medical-assistant", "name": "Medical Assistant & Healthcare Administration", "department": "Health Sciences"},
-        {"id": "paralegal", "name": "Paralegal Studies", "department": "Legal Studies"},
-        {"id": "software-dev", "name": "Software Development & Computer Science", "department": "Information Technology"},
-        {"id": "communication", "name": "Communication & Professional Studies", "department": "Communications"},
-        {"id": "hospitality", "name": "Hospitality & Tourism Management", "department": "Business & Accounting"}
+        {
+            "id": "accounting",
+            "name": "Accounting",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Accounting",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/accounting-major/about?showBack=true"
+        },
+        {
+            "id": "business-mgmt",
+            "name": "Business Management & Operations",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Business Management",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-business-management/about?showBack=true"
+        },
+        {
+            "id": "cybersecurity",
+            "name": "Cybersecurity",
+            "department": "Information Technology",
+            "pg_name": "Ensign - Cybersecurity",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/information-technology2/about?showBack=true"
+        },
+        {
+            "id": "digital-marketing",
+            "name": "Digital Marketing",
+            "department": "Communications",
+            "pg_name": "Ensign - Digital / Social Media Marketing",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/digital-social-media-marketing/about?showBack=true"
+        },
+        {
+            "id": "digital-content",
+            "name": "Digital Content Creation",
+            "department": "Communications",
+            "pg_name": "Ensign - Digital Content Creation",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-digital-content-creation1/about?showBack=true"
+        },
+        {
+            "id": "info-tech",
+            "name": "Information Technology & Systems Administration",
+            "department": "Information Technology",
+            "pg_name": "Ensign - Information Technology",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-information-technology/about?showBack=true"
+        },
+        {
+            "id": "interior-design",
+            "name": "Interior Design",
+            "department": "Design & Arts",
+            "pg_name": "Ensign - Interior Design",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-interior-design/about?showBack=true"
+        },
+        {
+            "id": "medical-assistant",
+            "name": "Medical Assistant & Healthcare Administration",
+            "department": "Health Sciences",
+            "pg_name": "Ensign - Medical Assisting",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/health-professions/about?showBack=true"
+        },
+        {
+            "id": "paralegal",
+            "name": "Paralegal Studies",
+            "department": "Legal Studies",
+            "pg_name": "Ensign - General Discussion / Legal Network",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/discussion3/about?showBack=true"
+        },
+        {
+            "id": "software-dev",
+            "name": "Software Development & Computer Science",
+            "department": "Information Technology",
+            "pg_name": "Ensign - Software Engineering",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-software-engineering/about?showBack=true"
+        },
+        {
+            "id": "communication",
+            "name": "Communication & Professional Studies",
+            "department": "Communications",
+            "pg_name": "Ensign - Marketing & Communications",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-communications/about?showBack=true"
+        },
+        {
+            "id": "hospitality",
+            "name": "Hospitality & Tourism Management",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Hospitality & Tourism Management",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-hospitality-tourism-management/about?showBack=true"
+        },
+        {
+            "id": "finance",
+            "name": "Finance",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Finance",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ensign-finance/about?showBack=true"
+        },
+        {
+            "id": "business-analytics",
+            "name": "Business Analytics / Intelligence",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Business Analytics / Intelligence",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/business-intelligence-data-analytics/about?showBack=true"
+        },
+        {
+            "id": "supply-chain",
+            "name": "Global Supply Chain & Operations",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Global Supply Chain",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/global-supply-chain-and-operations1/about?showBack=true"
+        },
+        {
+            "id": "project-mgmt",
+            "name": "Project Management",
+            "department": "Business & Accounting",
+            "pg_name": "Ensign - Project Management",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/project-management/about?showBack=true"
+        },
+        {
+            "id": "ux-ui",
+            "name": "UX / UI Design",
+            "department": "Design & Arts",
+            "pg_name": "UX / UI",
+            "url": "https://ces.peoplegrove.com/hub/ces/groups/ux-ui/about?showBack=true"
+        }
     ],
     "interview_questions": [
         "How did your studies and projects at Ensign College prepare you for your current position?",
