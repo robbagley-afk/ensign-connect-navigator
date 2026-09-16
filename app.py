@@ -64,6 +64,11 @@ CONFIG_DATA = {
         "Which technical skills or certificates (e.g., CAR 201 or industry certs) are most valued in your workplace?",
         "What advice would you give to a current Ensign student preparing to apply for internships in this field?",
         "Are there specific professional organizations or industry meetups you recommend joining?"
+    ],
+    "interview_guides": [
+        {"title": "Informational Interviews Guide", "url": "https://lds-business-college.brightspotcdn.com/12/5b/6df443b6489d9c008cb497c2a95f/informational-interviews.pdf?openInDeviceBrowser=true"},
+        {"title": "Know Your Professional Guide", "url": "https://lds-business-college.brightspotcdn.com/f0/b5/f78938de4d26b0ba8cc704fb8727/knowyourprofessionalguide.pdf?openInDeviceBrowser=true"},
+        {"title": "BYU Informational Interview Handout", "url": "https://brightspotcdn.byu.edu/54/b6/2554ebb842fab54640a15ff0afb3/informational-interview.pdf?openInDeviceBrowser=true"}
     ]
 }
 
