@@ -21,10 +21,6 @@ const CHECKLIST_ITEMS = [
   { id: 's3_find_groups', step: 2, title: 'Open Ensign College Groups', desc: 'Select Ensign College under Schools and view the major groups directory.' },
   { id: 's3_join_group', step: 2, title: 'Join your specific major group', desc: 'Click the green Join control on your degree program group.' },
   { id: 's3_explore_tabs', step: 2, title: 'Check Members & Discussion', desc: 'Review the blue Members and Discussion links to see active peers and faculty.' },
-  // Step 4
-  { id: 's4_menu', step: 3, title: 'Open Hamburger Menu & Preferences', desc: 'Click your profile avatar or the menu icon, then select Preferences.' },
-  { id: 's4_notifs', step: 3, title: 'Select "Notifications"', desc: 'Open the notification settings tab.' },
-  { id: 's4_sms', step: 3, title: 'Add mobile number & enable SMS', desc: 'Critical step: Ensure SMS alerts are turned on so you receive instant text alerts when mentors or alumni message you.' },
   // Step 5
   { id: 's5_browse_alumni', step: 4, title: 'Browse Ensign Alumni Community', desc: 'Search by industry, job title, or company in the PeopleGrove directory.' },
   { id: 's5_review_questions', step: 4, title: 'Review Informational Interview questions', desc: 'Prepare 3-5 thoughtful questions from the ENS 101 guide.' },
@@ -127,6 +123,15 @@ function setupChecklistInteractions() {
       renderMajorGroups(e.target.value.toLowerCase());
     });
   }
+
+  const smsPrefLink = document.getElementById('sms-pref-link');
+  if (smsPrefLink) {
+    smsPrefLink.addEventListener('click', () => {
+      state.smsOpened = true;
+      saveState();
+      updateProgress();
+    });
+  }
 }
 
 function renderChecklist() {
@@ -184,8 +189,10 @@ function toggleCheckItem(itemId) {
 }
 
 function updateProgress() {
-  const total = CHECKLIST_ITEMS.length;
-  const completed = Object.values(state.checked).filter(Boolean).length;
+  const total = CHECKLIST_ITEMS.length + 1;
+  const checklistCompleted = Object.values(state.checked).filter(Boolean).length;
+  const smsCompleted = state.smsOpened ? 1 : 0;
+  const completed = checklistCompleted + smsCompleted;
   const pct = Math.round((completed / total) * 100);
 
   const fillEl = document.getElementById('progress-fill');
@@ -197,7 +204,7 @@ function updateProgress() {
   // Update step button completed styles
   for (let s = 0; s < 5; s++) {
     const stepItems = CHECKLIST_ITEMS.filter(item => item.step === s);
-    const stepDone = stepItems.every(item => state.checked[item.id]);
+    const stepDone = stepItems.length > 0 ? stepItems.every(item => state.checked[item.id]) : Boolean(state.smsOpened);
     const btn = document.getElementById(`nav-step-${s}`);
     if (btn) {
       btn.classList.toggle('completed', stepDone);
