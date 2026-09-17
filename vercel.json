@@ -4,7 +4,6 @@
   "rewrites": [
     { "source": "/api/config", "destination": "/api/index.py?action=config" },
     { "source": "/api/outreach-draft", "destination": "/api/index.py?action=outreach-draft" },
-    { "source": "/healthz", "destination": "/api/index.py?action=status" },
-    { "source": "/api/(.*)", "destination": "/api/index.py?action=$1" }
+    { "source": "/healthz", "destination": "/api/index.py?action=status" }
   ]
 }

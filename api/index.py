@@ -56,7 +56,7 @@ class handler(BaseHTTPRequestHandler):
         elif action == "status" or path in ("/healthz", "/api/healthz") or "/healthz" in matched:
             self._json({"status": "ok", "app": CONFIG_DATA["app_name"]})
         else:
-            self._json({"error": "Not found", "path": path, "action": action}, 404)
+            self._json({"error": "Not found", "path": path, "action": action, "headers": dict(self.headers)}, 404)
 
     def do_POST(self):
         parsed = urlparse(self.path)
