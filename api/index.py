@@ -12,7 +12,7 @@ import json
 import sys
 import os
 from http.server import BaseHTTPRequestHandler
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 
 # Pull shared logic from the parent app module
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -45,18 +45,29 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        path = urlparse(self.path).path
-        if path in ("/api/config", "/api/config/"):
+        parsed = urlparse(self.path)
+        query = parse_qs(parsed.query)
+        action = query.get("action", [""])[0].strip()
+        matched = self.headers.get("x-matched-path", "")
+        path = parsed.path
+
+        if action == "config" or path in ("/api/config", "/api/config/") or "/api/config" in matched:
             self._json(CONFIG_DATA)
-        elif path == "/healthz":
+        elif action == "status" or path in ("/healthz", "/api/healthz") or "/healthz" in matched:
             self._json({"status": "ok", "app": CONFIG_DATA["app_name"]})
         else:
-            self._json({"error": "Not found"}, 404)
+            self._json({"error": "Not found", "path": path, "action": action}, 404)
 
     def do_POST(self):
-        path = urlparse(self.path).path
-        if path not in ("/api/outreach-draft", "/api/outreach-draft/"):
-            self._json({"error": "Not found"}, 404)
+        parsed = urlparse(self.path)
+        query = parse_qs(parsed.query)
+        action = query.get("action", [""])[0].strip()
+        matched = self.headers.get("x-matched-path", "")
+        path = parsed.path
+
+        is_outreach = (action == "outreach-draft" or path in ("/api/outreach-draft", "/api/outreach-draft/") or "/api/outreach-draft" in matched)
+        if not is_outreach:
+            self._json({"error": "Not found", "path": path, "action": action}, 404)
             return
 
         content_len = int(self.headers.get("Content-Length", 0))
