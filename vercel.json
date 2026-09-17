@@ -1,12 +1,8 @@
 {
-  "version": 2,
-  "builds": [
-    { "src": "api/index.py", "use": "@vercel/python" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.py" },
-    { "src": "/app.js", "dest": "/public/app.js" },
-    { "src": "/styles.css", "dest": "/public/styles.css" },
-    { "src": "/(.*)", "dest": "/public/index.html" }
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/healthz", "destination": "/api/index.py" }
   ]
 }

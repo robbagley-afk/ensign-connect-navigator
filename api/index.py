@@ -25,6 +25,9 @@ class handler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):  # suppress access log noise in Vercel
         pass
 
+    def log_request(self, code='-', size='-'):
+        pass
+
     def _json(self, data: dict, status: int = 200):
         body = json.dumps(data, indent=2).encode("utf-8")
         self.send_response(status)
@@ -33,6 +36,13 @@ class handler(BaseHTTPRequestHandler):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(body)
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
 
     def do_GET(self):
         path = urlparse(self.path).path

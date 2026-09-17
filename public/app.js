@@ -62,7 +62,7 @@ function saveState() {
 
 async function fetchConfig() {
   try {
-    const res = await fetch('api/config');
+    const res = await fetch('/api/config');
     if (res.ok) {
       appConfig = await res.json();
     }
