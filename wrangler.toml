@@ -1,0 +1,4 @@
+# Cloudflare Pages Configuration
+name = "ensign-connect-navigator"
+compatibility_date = "2026-09-16"
+pages_build_output_dir = "public"

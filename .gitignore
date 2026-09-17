@@ -24,3 +24,6 @@ Thumbs.db
 *.sqlite3
 /tmp/
 .vercel
+
+# Cloudflare
+.wrangler/
