@@ -147,16 +147,16 @@ Run both sites simultaneously for 3–5 days. Once Rob verifies that the Cloudfl
 
 ---
 
-## 5. Strict Privacy & Security Boundary (MANDATORY)
+## 5. Career Services & Student Data Privacy Boundary (MANDATORY)
 
-> [!CAUTION]
-> **Confidential Audio Boundary — Read Carefully:**
-> Cloudflare Workers AI offers a free Whisper model (`@cf/openai/whisper`). 
-> **NEVER use Cloudflare Workers AI Whisper for confidential meetings, staff 1:1s, student counseling, HR, or FERPA-scoped records.**
+> [!IMPORTANT]
+> **Student Data Protection & FERPA Compliance — Read Carefully:**
+> All AI tools deployed for Career Services must protect student privacy. Because student resumes, career goals, and interview answers can contain identifiable personal information (PII):
 > 
-> * **Why?** Cloudflare's free tier has no Business Associate Agreement (BAA) or institutional Student Data Protection Agreement with Ensign College. Audio leaves the device and transits public edge data centers.
-> * **Where Confidential Audio Goes:** Keep all confidential transcription strictly **on-device on the Mac Studio** using Rob's existing `on-device-transcriber` pipeline (`Superwhisper` + local `qwen3.6-35b-a3b` in LM Studio). It is 100% airgapped and private.
-> * **Where Cloudflare Whisper IS Permitted:** ONLY for public student-facing mock interview practice tools (e.g., *Interview Practice Coach*) where students record generic answers to practice questions ("Tell me about a time you solved a problem") with zero PII or student records.
+> * **Prohibited on Free Consumer Cloud APIs:** Never route real student resumes, NetIDs, academic history, or coaching transcripts through free consumer AI tiers (e.g., consumer ChatGPT or free Google AI Studio). Free tiers reserve the right to retain logs and use inputs for model training.
+> * **Approved Cloud Path for Student Tools:** All cloud inference for Career Services apps must route through **paid Zero Data Retention (ZDR) endpoints** (Google Gemini API with billing enabled, Groq, or Cloudflare Workers AI).
+> * **Student Voice Data in Interview Practice Coach:** Cloudflare Workers AI Whisper (`@cf/openai/whisper`) and Groq Whisper are approved **specifically for student mock interview practice** (e.g., answering STAR behavioral questions). Ensure the app does not prompt students for sensitive personal identification, financial information, or education records during practice sessions.
+> * **Client-Side Redaction & Fail-Closed Logic:** If an app accepts free-form student text (like resume bullets or cover letters), strip contact details (email, phone, address) client-side before sending to the model, or use the deterministic offline rules engine if the privacy check fails.
 
 ---
 
