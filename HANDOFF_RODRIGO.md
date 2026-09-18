@@ -160,20 +160,98 @@ Run both sites simultaneously for 3–5 days. Once Rob verifies that the Cloudfl
 
 ---
 
-## 6. Portfolio Fleet Migration Roadmap
+## 6. Zero Data Retention (ZDR) Models via API & Subscription Guide
+
+To keep Career Services AI applications functional when local inference (Mac Studio LM Studio) is unavailable—without risking student privacy or FERPA violations—the cloud architecture must route through **Zero Data Retention (ZDR)** API endpoints.
+
+### What is ZDR and Why Is It Mandatory?
+* **Standard Free Cloud APIs (Risk):** Free tiers (e.g., free Google AI Studio, public consumer ChatGPT) explicitly reserve the right to log prompts, store audio, and use submissions for model training or human evaluation. **This is unacceptable for any student, resume, or coaching data.**
+* **Zero Data Retention (ZDR):** Prompts, completions, and audio streams are processed **in volatile RAM only** and discarded immediately upon response delivery. They are never written to disk, never reviewed by human contractors, and never used to train models.
+
+---
+
+### Approved ZDR Providers & Subscription Guide
+
+| Provider | Model Family | ZDR Status | Pricing / Tier Required | Best Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| **Google Gemini API** | Gemini 2.5 Flash / Pro | ✅ **ZDR on Paid Tier**<br>❌ *Not ZDR on free tier* | **Pay-As-You-Go** via Google Cloud billing. Extremely inexpensive (~$0.075 / 1M tokens). | Primary coaching engine (Career Fair Coach, Resume Coach, Academic Advisor) |
+| **Groq Cloud** | Llama 3.3 70B, Whisper-large-v3 | ✅ **Default ZDR** (RAM only) | Pay-as-you-go (~$0.03/hr for Whisper audio, ~$0.59/1M tokens text). | Ultra-low-latency voice transcription & pitch roleplay |
+| **Cloudflare Workers AI** | `@cf/openai/whisper`, Llama 3.3 | ⚠️ **No Training**, but retains transient edge logs | Free tier (100k requests/day, 10k neurons/day). Enterprise tier offers full ZDR. | Public student mock interview practice |
+| **Together AI / Fireworks** | Qwen 2.5, DeepSeek, Mistral | ✅ **ZDR on Paid API** | Pay-as-you-go with credit card. | Open-weights fallback matching Mac Studio local Qwen |
+
+---
+
+### How to Subscribe & Configure ZDR for Ensign College Apps
+
+#### 1. Google Gemini API (Google AI Studio with Pay-As-You-Go)
+1. Go to **[ai.google.dev](https://ai.google.dev/)** / **[aistudio.google.com](https://aistudio.google.com/)**.
+2. Sign in with the department Google account.
+3. Click **Get API key** &rarr; **Set up Billing** (links to a Google Cloud Project with a departmental credit card).
+4. **Critical Policy Switch:** Attaching billing immediately transitions the project from the *Free Consumer Terms* to the *Paid Commercial API Terms*, activating **Zero Data Retention** (prompts and completions are not logged or used for training). Ref: [ai.google.dev/gemini-api/docs/zdr](https://ai.google.dev/gemini-api/docs/zdr).
+5. Copy the API key and set it as an encrypted secret in Cloudflare Pages:
+   - Cloudflare Dashboard &rarr; Pages Project &rarr; **Settings** &rarr; **Environment Variables** &rarr; Add `GEMINI_API_KEY` (Encrypt).
+
+#### 2. Groq Cloud (Ultra-Fast Speech-to-Text & Text Inference)
+1. Go to **[console.groq.com](https://console.groq.com/)** and create an account.
+2. Navigate to **Billing** and add payment details.
+3. Review Groq's data commitment: Groq does not retain input or output data; inference runs entirely in LPUs/memory and is purged on completion. Ref: [console.groq.com/docs/your-data](https://console.groq.com/docs/your-data).
+4. Generate an API key &rarr; Set as `GROQ_API_KEY` in Cloudflare Pages environment variables.
+5. In the Interview Practice Coach app, configure the audio transcription endpoint to use `https://api.groq.com/openai/v1/audio/transcriptions` with model `whisper-large-v3`.
+
+---
+
+### Developer Implementation Pattern (Fail-Closed Router)
+
+In all future Cloudflare Workers/Pages Functions, implement the shared inference gateway following this pattern:
+
+```javascript
+// Example: functions/api/chat.js (Pages Function)
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const body = await request.json();
+
+  // 1. Pre-flight Privacy Gate (Client-side redaction check)
+  if (containsSensitiveRecord(body.prompt)) {
+    return new Response(JSON.stringify({ 
+      error: "Data policy rejection: Potential student record detected. Routing to local on-device lane only." 
+    }), { status: 403 });
+  }
+
+  // 2. Primary Lane: ZDR Cloud Provider (Gemini / Groq)
+  if (env.GEMINI_API_KEY) {
+    try {
+      const response = await callGeminiZDR(body.prompt, env.GEMINI_API_KEY);
+      return new Response(JSON.stringify(response), { headers: { "Content-Type": "application/json" } });
+    } catch (err) {
+      console.warn("Cloud ZDR provider failed, attempting fallback...", err);
+    }
+  }
+
+  // 3. Fallback Lane: Deterministic / Socratic rule-based fallback
+  return new Response(JSON.stringify(getDeterministicFallback(body)), { 
+    headers: { "Content-Type": "application/json" } 
+  });
+}
+```
+
+---
+
+## 7. Portfolio Fleet Migration Roadmap
 
 Once Ensign Connect Navigator is verified on Cloudflare, migrate the remaining portfolio apps following this exact dual-hosting pattern:
 
-1. **`ensign-career-fair-coach`** (Vercel &rarr; Cloudflare Pages + Gemini API proxy)
+1. **`ensign-career-fair-coach`** (Vercel &rarr; Cloudflare Pages + Gemini Paid ZDR API proxy)
 2. **`gemini-coaching-agent-starter`** (Vercel &rarr; Cloudflare Pages template)
-3. **`resume-coach-ai` / `resume-improver`** (Mac Studio local &rarr; Cloudflare Pages)
+3. **`resume-coach-ai` / `resume-improver`** (Mac Studio local &rarr; Cloudflare Pages with de-identified/synthetic guardrails)
 4. **`career-services-tools`** (Mac Studio dashboard &rarr; Central Cloudflare Pages Hub)
 
 ---
 
-## 7. Authoritative Mem.ai Documentation Links
+## 8. Authoritative Mem.ai Documentation Links
 
-All architectural decisions and logs are synchronized in Rob's Mem.ai workspace:
+All architectural decisions, privacy boundaries, and logs are synchronized in Rob's Mem.ai workspace:
+* **Privacy & ZDR Architecture Plan:** [`AI Career Services Apps — Cloud Hosting, Inference Fallback, and Privacy Implementation Plan`](https://mem.ai/notes/fbfa0abc-c220-4251-ad34-14f0f52986ce) *(Authored 2026-09-18)*
 * **Hosting Master Project:** [`Project: Free Public Cloud Hosting for AI Portfolio Apps`](https://mem.ai/notes/398020bd-6faf-5429-8fd3-8d7d0622146a)
 * **Navigator Hub Note:** [`Agent: Ensign Connect Navigator — Hub`](https://mem.ai/notes/a62b893d-e274-5143-9df1-216cd792c069)
 * **Next Week Execution Task:** [`Task: AI Portfolio Cloudflare Migration & Vercel Decommissioning (Week of Sept 21, 2026)`](https://mem.ai/notes/9cc1f53f-601c-57ba-a498-174f7af1abb7)
+
