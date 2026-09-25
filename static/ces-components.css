@@ -1,0 +1,244 @@
+/* ==========================================================================
+   CES Component Library v1.0
+   Standardized UI components for Ensign College Career Services Apps
+   ========================================================================== */
+
+/* ── 1. Topbar & Header ── */
+.ces-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--ces-topbar-height);
+  background: var(--ces-navy-900);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--ces-shadow-topbar);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 28px;
+  color: #ffffff;
+}
+
+.ces-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.ces-brand-crest {
+  width: 40px;
+  height: 40px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--ces-navy-800) 0%, var(--ces-navy-950) 100%);
+  border: 1.5px solid var(--ces-gold);
+  display: grid;
+  place-items: center;
+  color: var(--ces-gold);
+  font-family: var(--ces-font-serif);
+  font-size: 21px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.ces-brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ces-brand-title {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ces-brand-sub {
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--ces-gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.ces-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.ces-nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--ces-radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  transition: all var(--ces-transition);
+}
+
+.ces-nav-back:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--ces-gold);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ── 2. Status & Version Badges ── */
+.ces-version-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: var(--ces-radius-pill);
+  font-size: 11px;
+  font-weight: 750;
+  font-family: var(--ces-font-mono);
+  background: rgba(212, 158, 36, 0.2);
+  color: var(--ces-gold);
+  border: 1px solid rgba(212, 158, 36, 0.35);
+  vertical-align: middle;
+}
+
+.ces-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: var(--ces-radius-pill);
+  font-size: 11.5px;
+  font-weight: 650;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.ces-status-pill .ces-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ces-success);
+  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25);
+}
+
+.ces-status-pill.warning .ces-dot {
+  background: var(--ces-warning);
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25);
+}
+
+.ces-status-pill.error .ces-dot {
+  background: var(--ces-error);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25);
+}
+
+/* ── 3. Buttons ── */
+.ces-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: var(--ces-radius-sm);
+  font-family: var(--ces-font-body);
+  font-size: 13.5px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: transform var(--ces-transition), background var(--ces-transition), border-color var(--ces-transition), box-shadow var(--ces-transition);
+}
+
+.ces-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.ces-btn:focus-visible {
+  outline: 2px solid var(--ces-gold);
+  outline-offset: 2px;
+}
+
+.ces-btn-primary {
+  background: linear-gradient(135deg, var(--ces-navy-900) 0%, var(--ces-navy-800) 100%);
+  color: #ffffff;
+  border-color: var(--ces-navy-950);
+  box-shadow: 0 3px 12px rgba(13, 34, 56, 0.18);
+}
+
+.ces-btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--ces-navy-850) 0%, var(--ces-navy-700) 100%);
+  box-shadow: 0 5px 16px rgba(13, 34, 56, 0.25);
+  border-color: var(--ces-gold);
+}
+
+.ces-btn-gold {
+  background: var(--ces-gold);
+  color: var(--ces-navy-950);
+  border-color: var(--ces-gold);
+  box-shadow: 0 3px 10px rgba(212, 158, 36, 0.25);
+}
+
+.ces-btn-gold:hover:not(:disabled) {
+  background: var(--ces-gold-hover);
+  border-color: var(--ces-gold-hover);
+  box-shadow: 0 5px 14px rgba(212, 158, 36, 0.35);
+}
+
+.ces-btn-secondary {
+  background: #ffffff;
+  color: var(--ces-navy-900);
+  border-color: var(--ces-line);
+}
+
+.ces-btn-secondary:hover:not(:disabled) {
+  background: var(--ces-navy-50);
+  border-color: var(--ces-navy-700);
+}
+
+/* ── 4. Panels & Cards ── */
+.ces-panel {
+  background: var(--ces-surface);
+  border: 1px solid var(--ces-line);
+  border-radius: var(--ces-radius-lg);
+  box-shadow: var(--ces-shadow-md);
+  padding: 24px 28px;
+  transition: border-color var(--ces-transition), box-shadow var(--ces-transition);
+}
+
+.ces-panel--student {
+  border-top: 4px solid var(--ces-gold);
+}
+
+.ces-panel--mentor {
+  border-top: 4px solid var(--ces-navy-700);
+}
+
+/* ── 5. Form Elements ── */
+.ces-input,
+.ces-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--ces-line);
+  border-radius: var(--ces-radius-sm);
+  background: #ffffff;
+  font-family: var(--ces-font-body);
+  font-size: 14px;
+  color: var(--ces-ink);
+  transition: border-color var(--ces-transition), box-shadow var(--ces-transition);
+}
+
+.ces-input:focus,
+.ces-textarea:focus {
+  outline: none;
+  border-color: var(--ces-gold);
+  box-shadow: 0 0 0 3px rgba(212, 158, 36, 0.2);
+}

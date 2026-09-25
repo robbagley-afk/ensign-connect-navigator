@@ -1,0 +1,83 @@
+/* ==========================================================================
+   CES Design Token Sheet v1.0
+   Ensign College Career Services Design System Standard
+   Derived from Ensign Student Readiness Hub
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* ── 1. Color: Brand Base (Ensign Navy & Slate Hierarchy) ── */
+  --ces-navy-950:     #0a1826;   /* Deepest Navy — Sidebar, main heading high-contrast */
+  --ces-navy-900:     #0d2238;   /* Primary Topbar, active dark states */
+  --ces-navy-850:     #122b46;   /* Dark interactive hover */
+  --ces-navy-800:     #183759;   /* Secondary dark surfaces */
+  --ces-navy-700:     #224974;   /* Mid slate navy */
+  --ces-navy-600:     #2f5f93;   /* Light slate navy */
+  --ces-navy-100:     #e8f0f8;   /* Soft navy tint */
+  --ces-navy-50:      #f3f7fb;   /* Subtle background / chip fill */
+
+  /* ── 2. Color: Gold Accent (Warm Ensign Gold) ── */
+  --ces-gold:         #d49e24;   /* Primary accent, active borders, status pills */
+  --ces-gold-hover:   #b8861a;   /* Hover gold state */
+  --ces-gold-light:   #fef8eb;   /* Light gold badge/alert background */
+  --ces-gold-border:  #f3d791;   /* Gold subtle border */
+
+  /* ── 3. Color: Surface & Content ── */
+  --ces-ink:          #111c26;   /* High-contrast body text */
+  --ces-ink-soft:     #253545;   /* Secondary text */
+  --ces-muted:        #5c6e80;   /* Muted captions, metadata */
+  --ces-muted-light:  #8ba0b5;   /* Subtle icons, placeholders */
+  --ces-line:         #e2e8f0;   /* Standard card borders & dividers */
+  --ces-line-soft:    #edf2f7;   /* Secondary subtle dividers */
+  --ces-surface:      #ffffff;   /* Card, modal, panel surfaces */
+  --ces-background:   #f6f8fb;   /* Clean page background */
+
+  /* ── 4. Color: Semantic / Status ── */
+  --ces-success:      #059669;   /* Live / Online / Complete */
+  --ces-success-bg:   #ecfdf5;   /* Light green fill */
+  --ces-success-border:#a7f3d0;
+  --ces-warning:      #d97706;   /* Pilot / In Progress / Pending */
+  --ces-warning-bg:   #fffbeb;   /* Light amber fill */
+  --ces-warning-border:#fde68a;
+  --ces-error:        #dc2626;   /* Offline / Alert / Incomplete */
+  --ces-error-bg:     #fef2f2;   /* Light red fill */
+  --ces-error-border: #fecaca;
+  --ces-info:         #0284c7;   /* Informational badge */
+  --ces-info-bg:      #f0f9ff;
+
+  /* ── 5. Typography ── */
+  --ces-font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ces-font-serif:   Georgia, Cambria, 'Times New Roman', serif;
+  --ces-font-mono:    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --ces-text-xs:      0.75rem;    /* 12px — status pills, labels */
+  --ces-text-sm:      0.875rem;   /* 14px — secondary body */
+  --ces-text-base:    0.9375rem;  /* 15px — primary body */
+  --ces-text-lg:      1.125rem;   /* 18px — card titles */
+  --ces-text-xl:      1.25rem;    /* 20px — section headers */
+  --ces-text-2xl:     1.625rem;   /* 26px — page titles */
+
+  --ces-weight-normal:   400;
+  --ces-weight-medium:   500;
+  --ces-weight-semibold: 650;
+  --ces-weight-bold:     750;
+  --ces-weight-extrabold:850;
+
+  /* ── 6. Elevation & Shadows ── */
+  --ces-shadow-sm:    0 1px 3px rgba(10, 24, 38, 0.05);
+  --ces-shadow-md:    0 4px 16px rgba(10, 24, 38, 0.07);
+  --ces-shadow-lg:    0 12px 36px rgba(10, 24, 38, 0.10);
+  --ces-shadow-topbar:0 2px 10px rgba(10, 24, 38, 0.12);
+
+  /* ── 7. Radii ── */
+  --ces-radius-sm:    6px;
+  --ces-radius-md:    10px;
+  --ces-radius-lg:    14px;
+  --ces-radius-pill:  9999px;
+
+  /* ── 8. Transitions & Sizing ── */
+  --ces-transition:   150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ces-topbar-height:72px;
+  --ces-content-max:  1320px;
+}

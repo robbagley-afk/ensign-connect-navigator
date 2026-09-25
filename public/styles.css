@@ -1,27 +1,29 @@
+@import url('ces-tokens.css');
+
 :root {
-  --navy-900: #001a38;
-  --navy-800: #002855;
-  --navy-700: #0a3a70;
-  --navy-100: #e8f0f8;
-  --gold-500: #d6a43d;
-  --gold-600: #b58525;
-  --gold-100: #fbf5e8;
-  --green-600: #007a3e;
-  --green-500: #0e8c4c;
-  --green-100: #e6f6ed;
-  --gray-900: #1a202c;
-  --gray-700: #4a5568;
-  --gray-500: #718096;
-  --gray-300: #cbd5e0;
-  --gray-200: #e2e8f0;
-  --gray-100: #edf2f7;
-  --gray-50:  #f8fafc;
-  --white:    #ffffff;
-  --radius:   12px;
-  --radius-sm: 8px;
-  --shadow:   0 4px 16px rgba(0, 40, 85, 0.08);
-  --shadow-lg: 0 8px 30px rgba(0, 40, 85, 0.12);
-  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --navy-900: var(--ces-navy-900);
+  --navy-800: var(--ces-navy-800);
+  --navy-700: var(--ces-navy-700);
+  --navy-100: var(--ces-navy-100);
+  --gold-500: var(--ces-gold);
+  --gold-600: var(--ces-gold-hover);
+  --gold-100: var(--ces-gold-light);
+  --green-600: var(--ces-success);
+  --green-500: var(--ces-success);
+  --green-100: var(--ces-success-bg);
+  --gray-900: var(--ces-ink);
+  --gray-700: var(--ces-ink-soft);
+  --gray-500: var(--ces-muted);
+  --gray-300: var(--ces-line);
+  --gray-200: var(--ces-line-soft);
+  --gray-100: var(--ces-navy-50);
+  --gray-50:  var(--ces-background);
+  --white:    var(--ces-surface);
+  --radius:   var(--ces-radius-lg);
+  --radius-sm: var(--ces-radius-sm);
+  --shadow:   var(--ces-shadow-md);
+  --shadow-lg: var(--ces-shadow-lg);
+  --font-main: var(--ces-font-body);
 }
 
 *, *::before, *::after {
