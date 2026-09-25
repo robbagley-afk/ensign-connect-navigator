@@ -1,6 +1,7 @@
 /* ==========================================================================
-   CES Component Library v1.0
+   CES Component Library v1.1
    Standardized UI components for Ensign College Career Services Apps
+   Derived from Ensign Student Readiness Hub & Fortified via /ui-ux-principles
    ========================================================================== */
 
 /* ── 1. Topbar & Header ── */
@@ -8,7 +9,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--ces-topbar-height);
+  min-height: var(--ces-topbar-height);
   background: var(--ces-navy-900);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--ces-shadow-topbar);
@@ -26,6 +27,7 @@
   gap: 14px;
   text-decoration: none;
   color: #ffffff;
+  min-height: var(--ces-touch-min);
 }
 
 .ces-brand-crest {
@@ -78,12 +80,13 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 12px;
+  min-height: var(--ces-btn-min-height);
+  padding: 8px 14px;
   border-radius: var(--ces-radius-sm);
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #cbd5e1;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 650;
   text-decoration: none;
   transition: all var(--ces-transition);
@@ -94,6 +97,11 @@
   border-color: var(--ces-gold);
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+.ces-nav-back:focus-visible {
+  outline: var(--ces-focus-ring-width) solid var(--ces-focus-ring);
+  outline-offset: var(--ces-focus-ring-offset);
 }
 
 /* ── 2. Status & Version Badges ── */
@@ -114,9 +122,10 @@
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 5px 12px;
+  min-height: 28px;
+  padding: 4px 12px;
   border-radius: var(--ces-radius-pill);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 650;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -124,21 +133,65 @@
 }
 
 .ces-status-pill .ces-dot {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--ces-success);
-  box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.25);
+  background: var(--ces-status-success-border);
+  box-shadow: 0 0 0 2px rgba(22, 101, 52, 0.3);
+  flex-shrink: 0;
 }
 
 .ces-status-pill.warning .ces-dot {
-  background: var(--ces-warning);
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.25);
+  background: var(--ces-status-warning-border);
+  box-shadow: 0 0 0 2px rgba(146, 64, 14, 0.3);
 }
 
 .ces-status-pill.error .ces-dot {
-  background: var(--ces-error);
-  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.25);
+  background: var(--ces-status-error-border);
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.3);
+}
+
+/* Light / Card Pills */
+.ces-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--ces-radius-pill);
+  font-size: var(--ces-text-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  border: 1px solid transparent;
+}
+
+.ces-pill--success {
+  background-color: var(--ces-status-success-bg);
+  color: var(--ces-status-success-text);
+  border-color: var(--ces-status-success-border);
+}
+
+.ces-pill--warning {
+  background-color: var(--ces-status-warning-bg);
+  color: var(--ces-status-warning-text);
+  border-color: var(--ces-status-warning-border);
+}
+
+.ces-pill--error {
+  background-color: var(--ces-status-error-bg);
+  color: var(--ces-status-error-text);
+  border-color: var(--ces-status-error-border);
+}
+
+.ces-pill--info {
+  background-color: var(--ces-status-info-bg);
+  color: var(--ces-status-info-text);
+  border-color: var(--ces-status-info-border);
+}
+
+.ces-pill--neutral {
+  background-color: var(--ces-status-neutral-bg);
+  color: var(--ces-status-neutral-text);
+  border-color: var(--ces-status-neutral-border);
 }
 
 /* ── 3. Buttons ── */
@@ -147,6 +200,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+  min-height: var(--ces-btn-min-height);
+  min-width: var(--ces-btn-min-width);
   padding: 9px 18px;
   border-radius: var(--ces-radius-sm);
   font-family: var(--ces-font-body);
@@ -162,9 +217,17 @@
   transform: translateY(-1px);
 }
 
-.ces-btn:focus-visible {
-  outline: 2px solid var(--ces-gold);
-  outline-offset: 2px;
+.ces-btn:focus-visible,
+button:focus-visible,
+[type="button"]:focus-visible,
+[type="submit"]:focus-visible,
+a:focus-visible,
+.dashboard-link:focus-visible,
+.nav-link:focus-visible,
+[role="tab"]:focus-visible,
+[role="button"]:focus-visible {
+  outline: var(--ces-focus-ring-width) solid var(--ces-focus-ring) !important;
+  outline-offset: var(--ces-focus-ring-offset) !important;
 }
 
 .ces-btn-primary {
@@ -222,6 +285,15 @@
   border-top: 4px solid var(--ces-navy-700);
 }
 
+.ces-prose {
+  max-width: var(--ces-prose-max-width);
+}
+
+.ces-card-content {
+  max-width: var(--ces-card-max-width);
+  margin-inline: auto;
+}
+
 /* ── 5. Form Elements ── */
 .ces-input,
 .ces-textarea {
@@ -236,9 +308,49 @@
   transition: border-color var(--ces-transition), box-shadow var(--ces-transition);
 }
 
-.ces-input:focus,
-.ces-textarea:focus {
-  outline: none;
+.ces-input:focus-visible,
+.ces-textarea:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--ces-focus-ring-width) solid var(--ces-focus-ring) !important;
+  outline-offset: 0px !important;
   border-color: var(--ces-gold);
-  box-shadow: 0 0 0 3px rgba(212, 158, 36, 0.2);
+}
+
+/* ── 6. Reduced Motion Support ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── 7. Forced Colors (Windows High Contrast Mode) Support ── */
+@media (forced-colors: active) {
+  *:focus-visible {
+    outline: 2px solid Highlight !important;
+    outline-offset: 2px !important;
+  }
+
+  .ces-pill,
+  .ces-pill--success,
+  .ces-pill--warning,
+  .ces-pill--error,
+  .ces-pill--info,
+  .ces-pill--neutral {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border-color: ButtonText;
+    forced-color-adjust: none;
+  }
+
+  .ces-status-pill .ces-dot {
+    background-color: ButtonText;
+    outline: 1px solid ButtonText;
+  }
 }
