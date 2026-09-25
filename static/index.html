@@ -6,7 +6,8 @@
   <title>Ensign Connect Navigator v1.0 — Ensign College Career Services</title>
   <meta name="description" content="Step-by-step onboarding guide for Ensign College students to sign up for Ensign Connect, join major groups, enable SMS alerts, and connect with alumni.">
   <link rel="stylesheet" href="ces-tokens.css">
-  <link rel="stylesheet" href="styles.css?v=standard-v1.0">
+  <link rel="stylesheet" href="ces-components.css">
+  <link rel="stylesheet" href="styles.css?v=standard-v1.1">
 
   <!-- Vercel Web Analytics -->
   <script>
@@ -26,7 +27,7 @@
     <div class="header-container">
       <div>
         <span class="brand-badge">Ensign College Career Services</span>
-        <h1 class="header-title">Ensign Connect Navigator</h1>
+        <h1 class="header-title">Ensign Connect Navigator <span class="ces-version-tag">v1.0</span></h1>
         <p class="header-subtitle">Your student guide to signing up, joining major groups, setting up SMS alerts, and networking with alumni.</p>
       </div>
       <div class="header-actions">
@@ -502,6 +503,7 @@
   <!-- Toast Notification Container -->
   <div id="toast" class="toast"></div>
 
+  <script src="ces-motion.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
