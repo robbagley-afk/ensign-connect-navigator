@@ -761,3 +761,5 @@ button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visib
 /* ECC touch targets for text links (44px minimum) */
 .ecn-link-list a,
 a.ecn-link { display: inline-flex; align-items: center; min-height: var(--touch-min); }
+/* ECC: form controls do not inherit font by default, so they rendered in Arial */
+button, input, select, textarea { font-family: inherit; }
