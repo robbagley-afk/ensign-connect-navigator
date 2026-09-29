@@ -335,6 +335,8 @@ body {
   min-height: var(--touch-min);
 }
 
+.btn:active:not(:disabled) { transform: translateY(1px); filter: brightness(0.95); } /* ECC: pressed state */
+
 .btn-primary {
   background: var(--brand);
   color: #fff;
