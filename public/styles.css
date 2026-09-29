@@ -659,13 +659,14 @@ body {
 }
 
 .sidebar-step-group.active .sidebar-step-badge {
-  background: var(--gold-500);
-  color: var(--navy-900);
+  /* ECC: active = solid brand badge, white number (gold is identity only) */
+  background: var(--brand);
+  color: #fff;
 }
 
 .sidebar-step-group.completed .sidebar-step-badge {
-  background: var(--green-600);
-  color: var(--white);
+  background: var(--success-icon);
+  color: #fff;
 }
 
 .sidebar-checklist {
