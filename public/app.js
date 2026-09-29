@@ -374,7 +374,7 @@ function renderMajorGroups(filter) {
       <div>
         <div class="group-dept">${g.department}</div>
         <div class="group-name">${g.name}</div>
-        <div style="font-size: 11px; color: var(--gold-600); font-weight: 600; margin-top: 2px;">
+        <div style="font-size: var(--text-floor); color: var(--ink-muted); font-weight: 600; margin-top: 2px;">
           ${g.pg_name || "Ensign College Group"}
         </div>
       </div>
