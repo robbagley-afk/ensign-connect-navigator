@@ -241,9 +241,9 @@ body {
 }
 
 .nav-step-btn.completed .step-num {
-  background: var(--success-icon);
+  background: var(--success-text); /* 7:1 with the white numeral, #16a34a was 3.3:1 */
   color: #fff;
-  border-color: var(--success-icon);
+  border-color: var(--success-text);
 }
 
 /* Step Content Sections */
@@ -667,7 +667,7 @@ body {
 }
 
 .sidebar-step-group.completed .sidebar-step-badge {
-  background: var(--success-icon);
+  background: var(--success-text);
   color: #fff;
 }
 
