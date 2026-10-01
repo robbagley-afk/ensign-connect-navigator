@@ -3,7 +3,7 @@
 **Target Engineer:** Rodrigo  
 **Project Lead:** Rob Bagley (Associate Director of Career Services, Ensign College)  
 **Date:** September 18, 2026  
-**Repository:** [https://github.com/robbagley-afk/ensign-connect-navigator](https://github.com/robbagley-afk/ensign-connect-navigator)  
+**Repository:** [https://github.com/robbagley-dev/ensign-connect-navigator](https://github.com/robbagley-dev/ensign-connect-navigator)  
 **Current Live Edge URL:** [https://ensign-connect-navigator.vercel.app](https://ensign-connect-navigator.vercel.app)  
 
 ---
@@ -114,7 +114,7 @@ All Cloudflare Pages adapter files (`functions/`, `wrangler.toml`) are **already
 
 1. Log into **[dash.cloudflare.com](https://dash.cloudflare.com/)**.
 2. Navigate to **Workers & Pages** &rarr; **Create application** &rarr; **Pages** &rarr; **Connect to Git**.
-3. Select GitHub repository: **`robbagley-afk/ensign-connect-navigator`**.
+3. Select GitHub repository: **`robbagley-dev/ensign-connect-navigator`**.
 4. Configure build settings:
    * **Project name:** `ensign-connect-navigator`
    * **Production branch:** `main`
