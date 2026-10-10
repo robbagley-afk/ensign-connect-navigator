@@ -37,3 +37,13 @@ HOST=0.0.0.0
 ## Running on Mac Studio
 
 The app is built to run on the Mac Studio local app stack, bind to `127.0.0.1` or `0.0.0.0`, and integrate with the AI Project Suite Hub (`http://127.0.0.1:8092`) and Tailscale Funnel.
+
+## Previewing the Cloudflare Pages build
+
+Use the wrapper so wrangler keeps its local state out of the checkout:
+
+```bash
+scripts/dev-pages.sh
+```
+
+Plain `wrangler pages dev` writes `.wrangler/` next to `wrangler.toml`. In a cloud-synced checkout those SQLite files upload on every write. Set `WRANGLER_PERSIST_DIR` to change the location.
