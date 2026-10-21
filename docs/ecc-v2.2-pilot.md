@@ -6,7 +6,7 @@ Re-vendors all four shared CSS files, removes header/main width caps, aligns the
 
 Baseline: six static FAILs (two stale assets, four width caps). Final static audit: 0 FAIL, 0 WARN. Runtime checks: all five onboarding states pass with 0 FAIL, 0 WARN at 320,375,768,1440,1920. The outreach-state 320px check originally overflowed by 4px. A browser experiment changed only the 220px intrinsic grid minimum and reduced scrollWidth from 324 to 320. The source now uses minmax(min(100%,220px),1fr). All public/static files match byte for byte.
 
-Remaining before release: hosted preview verification and required Claude design sign-off. The helper GitHub connector returned opaque references during preflight, so review must use a supplied verified diff rather than unverified source-read claims. No production deployment or merge is authorized by this record.
+Remaining before release: required Claude design sign-off. Hosted preview verification is recorded below. The helper GitHub connector returned opaque references during preflight, so review must use a supplied verified diff rather than unverified source-read claims. No production deployment or merge is authorized by this record.
 
 ## Interaction and visual checks
 
@@ -22,6 +22,14 @@ GitHub ECC check observed: ecc-audit / ecc-audit, successful. First preview depl
 
 ## Current hold
 
-Keep this PR as a draft until the protected preview can be checked and Claude design sign-off is recorded. Vercel login is open in the owning Edge Beta tab. Resume there after Rob signs in and replies go. Do not merge or deploy production from this pilot without the existing publication authorization.
+Keep this PR as a draft until Claude design sign-off is recorded. Hosted preview verification is complete. Do not merge or deploy production from this pilot without the existing publication authorization.
 
 Review conversation: [supplied-diff and mobile-fix review](https://m365.cloud.microsoft/chat/agent/T_f14842f5-33be-4845-fed9-3991fee2e5ea.da0360c5-0abe-406e-ad17-e735f454fc15/conversation/0ef18206-3b3f-49d1-a141-511c45dc84a3). Two review messages, no helper implementation batches, no local-model offloads and no paid native agents. Exact changes and root-cause-confirmed CSS fixes were small enough for deterministic/inline application.
+
+## Hosted preview verification, 2026-10-20 19:51 MDT
+
+Rob completed manual Vercel authentication in the owning Edge Beta lane. Visible account scope was robbagley-afk. Verified deployment7214537781, success, source8ab39e27684789a63611787012f815b4f832d65e, at https://ensign-connect-navigator-lznjf2yf8-robbagley-afk.vercel.app/.
+
+A native Generate button click with fictional inputs returned /api/outreach-draft HTTP200 and rendered the expected Fictional Student / Example Mentor draft. At375px, the sidebar is static, document scrollWidth360 <= viewport375, and root scrollY moved5369.5 to5069.5. At1440px, sidebar remains sticky and scrollWidth1425 <= viewport1440. Montserrat passed document.fonts.check. /favicon.ico returned200 image/vnd.microsoft.icon. No message was sent externally.
+
+One console error was observed: /_vercel/insights/script.js returns404. This is an analytics resource limitation, not a failure of the tested form. Prior local checks remain as recorded. Claude design sign-off remains pending. No merge or production deployment performed.
