@@ -146,6 +146,16 @@ body {
   padding-right: 4px;
 }
 
+/* Stacked navigation must not cover the following content on phones/tablets. */
+@media (max-width: 991px) {
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
 /* Custom scrollbar for sidebar */
 .sidebar::-webkit-scrollbar {
   width: 6px;
