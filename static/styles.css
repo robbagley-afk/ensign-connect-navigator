@@ -90,7 +90,7 @@ body {
 
 .header-subtitle {
   color: var(--ink-muted);
-  font-size: 17px;
+  font-size: var(--text-body);
   max-width: 600px;
 }
 
@@ -113,7 +113,10 @@ body {
 
 @media (min-width: 992px) {
   .main-content {
-    grid-template-columns: 330px 1fr;
+    /* 280px is the ECC ceiling for the rail (--sidebar-width is 232px).
+       This app's rail carries the task checklist, which wraps every nav
+       label and the Task Checklists header at 232px. */
+    grid-template-columns: 280px 1fr;
     padding: 0 var(--gutter);
     gap: 24px;
     align-items: start;
@@ -122,7 +125,10 @@ body {
 
 @media (min-width: 1300px) {
   .main-content {
-    grid-template-columns: 360px 1fr;
+    /* 280px is the ECC ceiling for the rail (--sidebar-width is 232px).
+       This app's rail carries the task checklist, which wraps every nav
+       label and the Task Checklists header at 232px. */
+    grid-template-columns: 280px 1fr;
     padding: 0 var(--gutter);
     gap: 28px;
   }
@@ -289,7 +295,7 @@ body {
 
 .step-description {
   color: var(--gray-700);
-  font-size: 17px;
+  font-size: var(--text-body);
   margin-top: 6px;
 }
 
@@ -301,7 +307,7 @@ body {
   display: flex;
   gap: 14px;
   align-items: flex-start;
-  font-size: 17px;
+  font-size: var(--text-body);
 }
 
 .callout-info {
@@ -453,7 +459,7 @@ body {
 
 .check-item-title {
   font-weight: 700;
-  font-size: 17px;
+  font-size: var(--text-body);
   color: var(--navy-900);
 }
 
