@@ -1,0 +1,362 @@
+{
+  "step-0": {
+    "url": "http://127.0.0.1:8774",
+    "results": [
+      {
+        "width": 320,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 375,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 768,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1440,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1920,
+        "findings": [],
+        "fields": []
+      }
+    ]
+  },
+  "step-1": {
+    "url": "http://127.0.0.1:8774",
+    "results": [
+      {
+        "width": 320,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 375,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 768,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1440,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1920,
+        "findings": [],
+        "fields": []
+      }
+    ]
+  },
+  "step-2": {
+    "url": "http://127.0.0.1:8774",
+    "results": [
+      {
+        "width": 320,
+        "findings": [],
+        "fields": [
+          {
+            "id": "group-search-input",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 251,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 375,
+        "findings": [],
+        "fields": [
+          {
+            "id": "group-search-input",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 301,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 768,
+        "findings": [],
+        "fields": [
+          {
+            "id": "group-search-input",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 670,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "findings": [],
+        "fields": [
+          {
+            "id": "group-search-input",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 916,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "findings": [],
+        "fields": [
+          {
+            "id": "group-search-input",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 1370,
+            "h": 55
+          }
+        ]
+      }
+    ]
+  },
+  "step-3": {
+    "url": "http://127.0.0.1:8774",
+    "results": [
+      {
+        "width": 320,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 375,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 768,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1440,
+        "findings": [],
+        "fields": []
+      },
+      {
+        "width": 1920,
+        "findings": [],
+        "fields": []
+      }
+    ]
+  },
+  "step-4": {
+    "url": "http://127.0.0.1:8774",
+    "results": [
+      {
+        "width": 320,
+        "findings": [],
+        "fields": [
+          {
+            "id": "outreach-student-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 208,
+            "h": 55
+          },
+          {
+            "id": "outreach-alum-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 208,
+            "h": 55
+          },
+          {
+            "id": "outreach-major",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 208,
+            "h": 55
+          },
+          {
+            "id": "outreach-career",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 208,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 375,
+        "findings": [],
+        "fields": [
+          {
+            "id": "outreach-student-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 259,
+            "h": 55
+          },
+          {
+            "id": "outreach-alum-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 259,
+            "h": 55
+          },
+          {
+            "id": "outreach-major",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 259,
+            "h": 55
+          },
+          {
+            "id": "outreach-career",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 259,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 768,
+        "findings": [],
+        "fields": [
+          {
+            "id": "outreach-student-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 307,
+            "h": 55
+          },
+          {
+            "id": "outreach-alum-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 307,
+            "h": 55
+          },
+          {
+            "id": "outreach-major",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 307,
+            "h": 55
+          },
+          {
+            "id": "outreach-career",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 307,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 1440,
+        "findings": [],
+        "fields": [
+          {
+            "id": "outreach-student-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 282,
+            "h": 55
+          },
+          {
+            "id": "outreach-alum-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 282,
+            "h": 55
+          },
+          {
+            "id": "outreach-major",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 282,
+            "h": 55
+          },
+          {
+            "id": "outreach-career",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 282,
+            "h": 55
+          }
+        ]
+      },
+      {
+        "width": 1920,
+        "findings": [],
+        "fields": [
+          {
+            "id": "outreach-student-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 254,
+            "h": 55
+          },
+          {
+            "id": "outreach-alum-name",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 254,
+            "h": 55
+          },
+          {
+            "id": "outreach-major",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 254,
+            "h": 55
+          },
+          {
+            "id": "outreach-career",
+            "bg": "rgb(241, 245, 249)",
+            "border": "2px rgb(100, 116, 139)",
+            "font": "19px",
+            "w": 254,
+            "h": 55
+          }
+        ]
+      }
+    ]
+  }
+}
