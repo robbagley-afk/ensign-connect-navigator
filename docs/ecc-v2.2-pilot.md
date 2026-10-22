@@ -1,5 +1,24 @@
 # ECC v2.2 pilot
 
+## Current status, 2026-10-21
+
+[PR #8](https://github.com/robbagley-afk/ensign-connect-navigator/pull/8) is merged and published. Reviewed head: `48cc6732c3b34f49a89404b37097cbd1d3bcbf65`. Merge commit: `9ba451e43a7caa11444112de874b9e3c554fed42`.
+
+Rob authorized publication after reviewing the 375px and 1440px renders. His design acceptance is recorded in the [design-system pilot record](https://github.com/robbagley-afk/ensign-design-system/pull/24), merged at `a73aeae9b445e299b22b2062c31e63b486b0a3ad`. Independent Claude design sign-off has not been recorded.
+
+The published changes use 19px `--text-body` for reading text, retain 17px for compact labels and navigation, and use a 280px desktop rail within the approved ceiling. The inherited body font fix from PR #7 remains present.
+
+Verification recorded during publication at [the production site](https://ensign-connect-navigator.vercel.app/):
+
+- Runtime ECC audit: 0 FAIL / 0 WARN at 320, 375, 768, 1440 and 1920px.
+- Body font: 19px. Desktop rail: 280px at 1440px.
+- No horizontal scrolling at 375px and 1440px. Favicon: HTTP 200.
+- Before merge, the static audit returned 0 FAIL / 0 WARN / 0 INFO. Six shared public/static files were compared and matched byte for byte. See [PR #8 verification evidence](https://github.com/robbagley-afk/ensign-connect-navigator/pull/8#issuecomment-6322965344).
+
+The hosted PR #8 preview was not separately rechecked before merge. Earlier hosted-preview checks below refer to their recorded commits. Historical holds and pending-review statements below describe the earlier pilot state and are superseded by this publication record.
+
+## Historical pilot evidence
+
 Source main: 220d792970b230eabf43515215fe5c685b9dfa50. Design system and auditor: robbagley-afk/ensign-design-system at fdcee86079b64c4e7b1e2be2c9c96d21e5b527f0.
 
 Re-vendors all four shared CSS files, removes header/main width caps, aligns their responsive gutters and makes three inline grids fit narrower panels. Adds a network favicon at /favicon.ico and a secret-free pinned ECC audit caller. No outreach-generation or backend behavior changes.
@@ -20,7 +39,7 @@ Initial independent helper review of the supplied diff returned NO FINDINGS. Its
 
 GitHub ECC check observed: ecc-audit / ecc-audit, successful. First preview deployed automatically for3d3c933, while production remained220d792. Final code commit3df742807d4e109471589327724dd5940bee6f49 passed both observed ECC jobs. Its Preview deployment7214516343 succeeded. The protected preview redirected the dedicated Edge Beta session to Vercel sign-in, so hosted form behavior is not yet verified. No alternate authenticated surface or protection bypass was used. Required Claude design sign-off is not complete.
 
-## Current hold
+## Historical hold
 
 Keep this PR as a draft until Claude design sign-off is recorded. Hosted preview verification is complete. Do not merge or deploy production from this pilot without the existing publication authorization.
 
