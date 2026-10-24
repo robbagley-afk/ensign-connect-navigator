@@ -640,7 +640,7 @@ body {
 
 .sidebar-step-group.active {
   border-color: var(--navy-800);
-  background: #f8fafc;
+  background: var(--surface-sunken); /* ECC v2 page color, was a copy of the v1 value */
   box-shadow: 0 0 0 1px var(--navy-800);
 }
 
